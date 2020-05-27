@@ -6,6 +6,7 @@ use pocketmine\form\Form;
 use pocketmine\Player;
 use onebone\economyapi\EconomyAPI;
 use xtakumatutix\shopui\Form\Wood;
+use pocketmine\item\Item;
 
 Class buysellForm implements Form
 {
@@ -36,17 +37,18 @@ Class buysellForm implements Form
 
         switch ($data[0]) {
             case "true":
-            if ($player->getInventory()->contains(Item::get($this->id,$this->damage,$amount)) {
+            if ($player->getInventory()->contains(Item::get($this->id,$this->damage,$amount))) {
                 $player->getInventory()->removeItem(Item::get($this->id, $this->damage, $amount));
-                $player->sendMessage($this->id."".$this->damage"を".$amount."個売りました");
+                $player->sendMessage($this->id."".$this->damage."を".$amount."個売りました");
                 $sellmoney = $this->sell * $amount;
                 EconomyAPI::getInstance()->addmoney($player, $sellmoney);
             }else{
                 $player->sendMessage("売れません。");
             }
+            break;
 
             case "false":
-            if ($player->getInventory()->canAddItem(Item::get($this->id,$this->damage,$amount)) {
+            if ($player->getInventory()->canAddItem(Item::get($this->id,$this->damage,$amount))) {
                 $buymoney = $this->buy * $amount;
                 $mymoney = EconomyAPI::getInstance()->myMoney($player->getName());
                 if($mymoney > $buymoney){
@@ -58,6 +60,7 @@ Class buysellForm implements Form
             }else{
                 $player->sendMessage("インベントリに入りません");
             }
+            break;
         }
     }
 
@@ -66,8 +69,7 @@ Class buysellForm implements Form
         return [
             'type' => 'custom_form',
             'title' => '購入/売る',
-            'content' => 'aaaaa',
-            'buttons' => [
+            'content' => [
                 [
                     'type' => 'toggle',
                     'text' => '売るのはなにー？',
@@ -78,7 +80,7 @@ Class buysellForm implements Form
                     'text' => '入力',
                     'placeholder' => '売る/買う数',
                 ]
-            ],
+            ]
         ];
     }
 }
