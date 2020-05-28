@@ -24,48 +24,45 @@ Class buysellForm implements Form
         if ($data === null) {
             return;
         }
-        $amount = $data[1];
+        $amount = $data[2];
 
         if($amount === null){
-            $player->sendMessage("個数を指定してください");
-            return;
+            $player->sendMessage("§c >> §f個数を指定してください");
         }
         if(!is_numeric($amount)){
-            $player->sendMessage("数字で入力してください");
-            return;
+            $player->sendMessage("§c >> §f数字で入力してください");
         }
         if(!$amount < 0){
-            $player->sendMessage("整数で入力してください");
+            $player->sendMessage("§c >> §f整数で入力してください");
             return;
         }
 
-        switch ($data[0]) {
-            case "true":
+        switch ($data[1]) {
+            case true:
             if ($player->getInventory()->contains(Item::get($this->id,$this->damage,$amount))) {
                 $player->getInventory()->removeItem(Item::get($this->id, $this->damage, $amount));
-                $player->sendMessage($this->id."".$this->damage."を".$amount."個売りました");
                 $sellmoney = $this->sell * $amount;
+                $player->sendMessage("§a >> §f".$this->id.":".$this->damage."を".$amount."個売りました(".$sellmoney."KG)");
                 EconomyAPI::getInstance()->addmoney($player, $sellmoney);
             }else{
-                $player->sendMessage("売れません。");
+                $player->sendMessage("§c >> §f数が足りません。");
             }
             break;
             
 
-            case "false":
-            if (!$player->getInventory()->canAddItem(Item::get($this->id,$this->damage,$amount))) {
+            case false:
+            if ($player->getInventory()->canAddItem(Item::get($this->id,$this->damage,$amount))) {
                 $buymoney = $this->buy * $amount;
                 $mymoney = EconomyAPI::getInstance()->myMoney($player->getName());
-                $player->sendMessage("debug1");
                 if($mymoney > $buymoney){
                     $player->getInventory()->addItem(Item::get($this->id,$this->damage,$amount));
                     EconomyAPI::getInstance()->reduceMoney($player, $buymoney);
-                    $player->sendMessage($this->id.":".$this->damage."を".$amount."個買いました (".$buymoney."KG)");
+                    $player->sendMessage("§a >> §f".$this->id.":".$this->damage."を".$amount."個買いました (".$buymoney."KG)");
                 }else{
-                    $player->sendMessage("お金が足りません");
+                    $player->sendMessage("§c >> §fお金が足りません");
                 }
             }else{
-                $player->sendMessage("インベントリに入りません");
+                $player->sendMessage("§c >> §fインベントリに入りません");
             }
         }
     }
@@ -74,17 +71,21 @@ Class buysellForm implements Form
     {
         return [
             'type' => 'custom_form',
-            'title' => '購入/売る',
+            'title' => '③購入/売る',
             'content' => [
                 [
+                    'type' => 'label',
+                    'text' => "{$this->id}:{$this->damage}の購入画面です"
+                ],
+                [
                     'type' => 'toggle',
-                    'text' => '売るのはなにー？',
+                    'text' => '購入/売却',
                     'default' => false
                 ],
                 [
                     'type' => 'input',
-                    'text' => '入力',
-                    'placeholder' => '売る/買う数',
+                    'text' => '※整数で入力してください',
+                    'placeholder' => '購入数/売却数',
                 ]
             ]
         ];

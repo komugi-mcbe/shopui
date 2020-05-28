@@ -26,11 +26,11 @@ Class MainForm implements Form
     {
         return [
             'type' => 'form',
-            'title' => 'リアクション',
-            'content' => 'ボタンを押してリアクションしましょう',
+            'title' => '①種類選択',
+            'content' => '購入/売却したい種類を選んで下さい',
             'buttons' => [
                 [
-                    'text' => '木'
+                    'text' => '木類'
                 ]
             ],
         ];
