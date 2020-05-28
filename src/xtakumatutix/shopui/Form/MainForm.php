@@ -5,7 +5,10 @@ namespace xtakumatutix\shopui\Form;
 use pocketmine\form\Form;
 use pocketmine\Player;
 use onebone\economyapi\EconomyAPI;
-use xtakumatutix\shopui\Form\Wood\WoodForm;
+use xtakumatutix\shopui\Form\type\WoodForm;
+use xtakumatutix\shopui\Form\type\StoneForm;
+use xtakumatutix\shopui\Form\type\BrickForm;
+
 
 Class MainForm implements Form
 {
@@ -19,6 +22,14 @@ Class MainForm implements Form
             case 0:
             $player->sendForm(new WoodForm());
             break;
+
+            case 1:
+            $player->sendForm(new StoneForm());
+            break;
+
+            case 2:
+            $player->sendForm(new BrickForm());
+            break;
         }
     }
 
@@ -31,6 +42,12 @@ Class MainForm implements Form
             'buttons' => [
                 [
                     'text' => '木類'
+                ],
+                [
+                  'text' => '石類'
+                ],
+                [
+                  'text' => 'レンガ類'
                 ]
             ],
         ];

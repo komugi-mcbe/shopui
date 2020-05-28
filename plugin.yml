@@ -1,7 +1,7 @@
 ---
 name: shopui
-main: xtakumatutix\shop\Main
-version: 1.0.0
+main: xtakumatutix\shopui\Main
+version: 1.2.0
 api: 3.0.0
 commands:
   shop:
