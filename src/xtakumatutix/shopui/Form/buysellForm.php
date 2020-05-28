@@ -53,12 +53,14 @@ Class buysellForm implements Form
             
 
             case "false":
-            if ($player->getInventory()->canAddItem(Item::get($this->id,$this->damage,$amount))) {
+            if (!$player->getInventory()->canAddItem(Item::get($this->id,$this->damage,$amount))) {
                 $buymoney = $this->buy * $amount;
                 $mymoney = EconomyAPI::getInstance()->myMoney($player->getName());
+                $player->sendMessage("debug1");
                 if($mymoney > $buymoney){
                     $player->getInventory()->addItem(Item::get($this->id,$this->damage,$amount));
                     EconomyAPI::getInstance()->reduceMoney($player, $buymoney);
+                    $player->sendMessage($this->id.":".$this->damage."を".$amount."個買いました (".$buymoney."KG)");
                 }else{
                     $player->sendMessage("お金が足りません");
                 }
