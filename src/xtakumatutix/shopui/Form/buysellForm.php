@@ -25,14 +25,18 @@ Class buysellForm implements Form
             return;
         }
         $amount = $data[1];
-        if($amount == null){
+
+        if($amount === null){
             $player->sendMessage("個数を指定してください");
+            return;
         }
         if(!is_numeric($amount)){
             $player->sendMessage("数字で入力してください");
+            return;
         }
-        if($amount < 0){
+        if(!$amount < 0){
             $player->sendMessage("整数で入力してください");
+            return;
         }
 
         switch ($data[0]) {
@@ -46,6 +50,7 @@ Class buysellForm implements Form
                 $player->sendMessage("売れません。");
             }
             break;
+            
 
             case "false":
             if ($player->getInventory()->canAddItem(Item::get($this->id,$this->damage,$amount))) {
@@ -60,7 +65,6 @@ Class buysellForm implements Form
             }else{
                 $player->sendMessage("インベントリに入りません");
             }
-            break;
         }
     }
 
