@@ -22,6 +22,54 @@ Class WoodForm implements Form
             $sell = 10;
             $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
             break;
+
+            case 1:
+            $id = 17;
+            $damage = 1;
+            $buy = 15;
+            $sell = 10;
+            $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
+            break;
+
+            case 2:
+            $id = 17;
+            $damage = 2;
+            $buy = 15;
+            $sell = 10;
+            $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
+            break;
+
+            case 3:
+            $id = 17;
+            $damage = 3;
+            $buy = 15;
+            $sell = 10;
+            $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
+            break;
+
+            case 4:
+            $id = 17;
+            $damage = 4;
+            $buy = 15;
+            $sell = 10;
+            $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
+            break;
+
+            case 5:
+            $id = 162;
+            $damage = 0;
+            $buy = 15;
+            $sell = 10;
+            $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
+            break;
+
+            case 6:
+            $id = 162;
+            $damage = 1;
+            $buy = 15;
+            $sell = 10;
+            $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
+            break;
         }
     }
 
@@ -34,6 +82,21 @@ Class WoodForm implements Form
             'buttons' => [
                 [
                     'text' => 'オークの木'
+                ],
+                [
+                    'text' => '松の木' 
+                ],
+                [
+                    'text' => '白樺の木'
+                ],
+                [
+                    'text' => 'ジャングルの木'
+                ],
+                [
+                    'text' => 'アカシアの木'
+                ],
+                [
+                    'text' => 'ダークオークの木'
                 ]
             ],
         ];

@@ -32,9 +32,8 @@ Class buysellForm implements Form
         if(!is_numeric($amount)){
             $player->sendMessage("§c >> §f数字で入力してください");
         }
-        if(!$amount < 0){
+        if($amount < 0){
             $player->sendMessage("§c >> §f整数で入力してください");
-            return;
         }
 
         switch ($data[1]) {
