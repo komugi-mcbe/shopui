@@ -5,6 +5,7 @@ namespace xtakumatutix\shopui\Form\type;
 use pocketmine\form\Form;
 use pocketmine\Player;
 use xtakumatutix\shopui\Form\buysellForm;
+use xtakumatutix\shopui\Form\MainForm;
 
 Class StoneForm implements Form
 {
@@ -16,6 +17,10 @@ Class StoneForm implements Form
 
         switch ($data) {
             case 0:
+            $player->sendForm(new MainForm());
+            break;
+
+            case 1:
             $id = 4;
             $damage = 0;
             $buy = 10;
@@ -23,7 +28,7 @@ Class StoneForm implements Form
             $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
             break;
 
-            case 1:
+            case 2:
             $id = 1;
             $damage = 0;
             $buy = 15;
@@ -31,7 +36,7 @@ Class StoneForm implements Form
             $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
             break;
 
-            case 2:
+            case 3:
             $id = 48;
             $damage = 0;
             $buy = 17;
@@ -46,16 +51,19 @@ Class StoneForm implements Form
         return [
             'type' => 'form',
             'title' => '②石類',
-            'content' => '選択してください',
+            'content' => '選択してください (購入値段/売却値段)',
             'buttons' => [
                 [
-                    'text' => '丸石'
+                    'text' => '§c戻る'
                 ],
                 [
-                    'text' => '石' 
+                    'text' => '丸石 (10/8)'
                 ],
                 [
-                    'text' => '苔の生えた石'
+                    'text' => '石 (15/10)' 
+                ],
+                [
+                    'text' => '苔の生えた石 (17/12)'
                 ]
             ],
         ];

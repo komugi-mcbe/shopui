@@ -5,6 +5,7 @@ namespace xtakumatutix\shopui\Form\type;
 use pocketmine\form\Form;
 use pocketmine\Player;
 use xtakumatutix\shopui\Form\buysellForm;
+use xtakumatutix\shopui\Form\MainForm;
 
 Class BrickForm implements Form
 {
@@ -16,15 +17,11 @@ Class BrickForm implements Form
 
         switch ($data) {
             case 0:
-            $id = 45;
-            $damage = 0;
-            $buy = 25;
-            $sell = 15;
-            $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
+            $player->sendForm(new MainForm());
             break;
 
             case 1:
-            $id = 98;
+            $id = 45;
             $damage = 0;
             $buy = 25;
             $sell = 15;
@@ -33,7 +30,7 @@ Class BrickForm implements Form
 
             case 2:
             $id = 98;
-            $damage = 1;
+            $damage = 0;
             $buy = 25;
             $sell = 15;
             $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
@@ -41,7 +38,7 @@ Class BrickForm implements Form
 
             case 3:
             $id = 98;
-            $damage = 2;
+            $damage = 1;
             $buy = 25;
             $sell = 15;
             $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
@@ -49,13 +46,21 @@ Class BrickForm implements Form
 
             case 4:
             $id = 98;
+            $damage = 2;
+            $buy = 25;
+            $sell = 15;
+            $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
+            break;
+
+            case 5:
+            $id = 98;
             $damage = 3;
             $buy = 17;
             $sell = 12;
             $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
             break;
 
-            case 5:
+            case 6:
             $id = 206;
             $damage = 0;
             $buy = 55;
@@ -63,7 +68,7 @@ Class BrickForm implements Form
             $player->sendForm(new buysellForm($id, $damage, $buy, $sell));
             break;
 
-            case 6:
+            case 7:
             $id = 168;
             $damage = 2;
             $buy = 34;
@@ -78,28 +83,31 @@ Class BrickForm implements Form
         return [
             'type' => 'form',
             'title' => '②石類',
-            'content' => '選択してください',
+            'content' => '選択してください (購入値段/売却値段)',
             'buttons' => [
                 [
-                    'text' => 'レンガ'
+                    'text' => '§c戻る'
                 ],
                 [
-                    'text' => '石レンガ' 
+                    'text' => 'レンガ (25/15)'
                 ],
                 [
-                    'text' => '苔の生えた石レンガ'
+                    'text' => '石レンガ (25/15)' 
                 ],
                 [
-                    'text' => 'ひび割れた石レンガ'
+                    'text' => '苔の生えた石レンガ (25/15)'
                 ],
                 [
-                    'text' => '模様入り石レンガ'
+                    'text' => 'ひび割れた石レンガ (25/15)'
                 ],
                 [
-                    'text' => 'エンドストーンレンガ'
+                    'text' => '模様入り石レンガ (25/15)'
                 ],
                 [
-                    'text' => '海晶レンガ'
+                    'text' => 'エンドストーンレンガ (55/38)'
+                ],
+                [
+                    'text' => '海晶レンガ (34/24)'
                 ]
             ],
         ];

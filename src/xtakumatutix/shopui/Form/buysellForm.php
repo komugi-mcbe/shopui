@@ -73,7 +73,7 @@ Class buysellForm implements Form
             'content' => [
                 [
                     'type' => 'label',
-                    'text' => "{$this->id}:{$this->damage}の購入画面です"
+                    'text' => "{$this->id}:{$this->damage}の購入画面です\n購入値段{$this->buy}\n売却値段{$this->sell}"
                 ],
                 [
                     'type' => 'toggle',

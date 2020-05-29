@@ -19,15 +19,15 @@ Class MainForm implements Form
         }
 
         switch ($data) {
-            case 0:
+            case 1:
             $player->sendForm(new WoodForm());
             break;
 
-            case 1:
+            case 2:
             $player->sendForm(new StoneForm());
             break;
 
-            case 2:
+            case 3:
             $player->sendForm(new BrickForm());
             break;
         }
@@ -40,6 +40,9 @@ Class MainForm implements Form
             'title' => '①種類選択',
             'content' => '購入/売却したい種類を選んで下さい',
             'buttons' => [
+                [
+                  'text' => '閉じる'
+                ],
                 [
                     'text' => '木類'
                 ],
